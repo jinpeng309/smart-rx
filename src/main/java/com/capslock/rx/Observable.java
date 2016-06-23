@@ -17,7 +17,7 @@ public class Observable<T> {
     }
 
     public static <T> Observable<T> create(OnSubscribe<T> f) {
-        return new Observable<T>(f);
+        return new Observable<>(f);
     }
 
     public <R> Observable<R> map(Func1<T, R> transform) {
