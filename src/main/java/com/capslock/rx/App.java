@@ -11,6 +11,7 @@ public class App {
                         subscriber.onNext(3);
                     }
                 })
+                .subscribeOn()
                 .map(value -> "hi," + value)
                 .subscribe(System.out::println);
     }

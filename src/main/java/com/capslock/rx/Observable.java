@@ -55,4 +55,12 @@ public class Observable<T> {
     private static <T> void subscribe(final Subscriber<T> subscriber, Observable<T> observable) {
         observable.onSubscribe.call(subscriber);
     }
+
+    public void unsafeSubscribe(final Subscriber<T> subscriber) {
+        onSubscribe.call(subscriber);
+    }
+
+    public Observable<T> subscribeOn() {
+        return create(new OperatorSubscribeOn<>(this));
+    }
 }
