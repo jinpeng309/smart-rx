@@ -5,14 +5,13 @@ package com.capslock.rx;
  */
 public class App {
     public static void main(String[] args) {
-        Observable.create(new Observable.OnSubscribe<Integer>() {
-            public void call(final Subscriber<? super Integer> subscriber) {
-                subscriber.onNext(3);
-            }
-        }).subscribe(new Action1<Integer>() {
-            public void call(final Integer value) {
-                System.out.println(value);
-            }
-        });
+        Observable
+                .create(new Observable.OnSubscribe<Integer>() {
+                    public void call(final Subscriber<? super Integer> subscriber) {
+                        subscriber.onNext(3);
+                    }
+                })
+                .map(value -> "hi," + value)
+                .subscribe(System.out::println);
     }
 }
