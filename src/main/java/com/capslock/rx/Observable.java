@@ -63,4 +63,8 @@ public class Observable<T> {
     public Observable<T> subscribeOn() {
         return create(new OperatorSubscribeOn<>(this));
     }
+
+    public Observable<T> observableOn() {
+        return lift(new OperatorObserveOn<>());
+    }
 }

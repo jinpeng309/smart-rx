@@ -8,11 +8,16 @@ public class App {
         Observable
                 .create(new Observable.OnSubscribe<Integer>() {
                     public void call(final Subscriber<? super Integer> subscriber) {
+                        System.out.println("current thread " + Thread.currentThread().hashCode());
                         subscriber.onNext(3);
                     }
                 })
                 .subscribeOn()
+                .observableOn()
                 .map(value -> "hi," + value)
-                .subscribe(System.out::println);
+                .subscribe((x) -> {
+                    System.out.println("current thread " + Thread.currentThread().hashCode());
+                    System.out.println(x);
+                });
     }
 }
